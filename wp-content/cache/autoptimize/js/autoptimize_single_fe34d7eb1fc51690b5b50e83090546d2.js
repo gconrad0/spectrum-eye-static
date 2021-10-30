@@ -1,0 +1,4 @@
+(function(){'use strict';window.kadenceBlocksMasonry={trigger_animation_class:function(element){element.classList.add('kt-masonry-trigger-animation');},init:function(){var masonryitems=document.querySelectorAll('.kb-masonry-init');if(!masonryitems.length){return;}
+for(let i=0;i<masonryitems.length;i++){var itemSelector=masonryitems[i].getAttribute('data-item-selector');var masRtl=true;if(document.body.classList.contains('rtl')){masRtl=false;}
+var masGrid=new Masonry(masonryitems[i],{itemSelector:itemSelector,isOriginLeft:masRtl,});imagesLoaded(masonryitems[i]).on('progress',function(){masGrid.layout();});masGrid.once('layoutComplete',function(items){var event=new CustomEvent('layoutComplete');masonryitems[i].dispatchEvent(event);});}}}
+if('loading'===document.readyState){document.addEventListener('DOMContentLoaded',window.kadenceBlocksMasonry.init);}else{window.kadenceBlocksMasonry.init();}})();
